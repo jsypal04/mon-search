@@ -11,11 +11,14 @@ app.get("/", function(req, res) {
   res.render("index.ejs")
 })
 
+console.log("line 14")
 app.post("/", function(req, res) {
+  console.log("line 16")
   let poke = req.body.poke
   let url = "https://pokeapi.co/api/v2/pokemon/" + poke + "/"
 
   request(url, function(error, response, body) {
+    console.log("line 21")
     if (body == "Not Found") {
       results.push({name: "Pokemon Not Found."})
       res.redirect("/results")
@@ -24,6 +27,7 @@ app.post("/", function(req, res) {
       let url = data.species.url
 
       request(url, function(error, response, body) {
+        console.log("line 30")
         //if (error) console.log(error)
         let pData = JSON.parse(body)
 
@@ -69,4 +73,4 @@ app.get("/results", function(req, res) {
   results = []
 })
 
-app.listen(5000)
+app.listen(process.env.PORT || 5000)
