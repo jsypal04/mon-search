@@ -4,21 +4,23 @@
 <nav class="navbar navbar-expand-sm bg-dark">
   <div class="container-fluid">
     <h2 class="col" style="color: white; text-align: center">Pokemon Search</h2>
-    <form action="/logout?_method=DELETE" method="POST">
-      <button type="submit" style="background: black; color: white">Log Out</button>
-    </form>
   </div>
 </nav>
 <div class="container p-5 my-5 border">
-  <form id="form" action="/" method="POST">
-    <label for="poke">Search a Pokemon</label>
-    <input id="poke" type="text" name="poke" placeholder="Search a Pokemon">
+  <form id="form" action="/register" method="POST">
+    <label>Name</label>
+    <br>
+    <input type="text" name="name">
+    <br>
+    <label>Email</label>
+    <br>
+    <input type="email" name="email">
+    <br>
+    <label>Password</label>
+    <br>
+    <input type="password" name="password">
+    <br><br>
     <button type="submit">Submit</button>
   </form>
-</div>
-
-<div class="container p-5 my-5 border">
-  <% users.forEach(user => { %>
-    <div><%= user.name %></div>
-  <% }) %>
+  <a href="/login">login</a>
 </div>
