@@ -14,7 +14,7 @@ app.get("/", function(req, res) {
 console.log("line 14")
 app.post("/", function(req, res) {
   console.log("line 16")
-  let poke = req.body.poke
+  let poke = req.body.poke.toLowerCase().trim()
   let url = "https://pokeapi.co/api/v2/pokemon/" + poke + "/"
 
   request(url, function(error, response, body) {
