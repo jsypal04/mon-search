@@ -6,6 +6,11 @@
     <h2 class="col" style="color: white; text-align: center">Pokemon Search</h2>
   </div>
 </nav>
+
+<% if (messages.error) { %>
+  <div class="alert alert-danger"><p><%= messages.error %></p></div>
+<% } %>
+
 <div class="container p-5 my-5 border">
   <form id="form" action="/login" method="POST">
       <label>Email</label>
