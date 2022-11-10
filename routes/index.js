@@ -10,17 +10,10 @@ let results = []
 
 // the route to display the home page
 router.get("/", util.checkAuthenticated, async function(req, res) {
-  try {
-    // extracts the name from the user object wierdly because the obj is weird
-    let userStr = JSON.stringify(await req.user)
-    let begin = userStr.indexOf("name\":\"")
-    let end = userStr.indexOf("\",\"email")
-    let name = userStr.slice(begin + 7, end)
+  // extracts the name from the user object wierdly because the obj is weird
+  let name = await util.getName(req)
 
-    res.render("index.ejs", {name: name})
-  } catch (e) {
-    console.log(e)
-  }
+  res.render("index.ejs", {name: name})
 })
 
 // route to process a poke search
@@ -87,26 +80,18 @@ router.delete("/logout", (req, res) => {
 
 // results route
 router.get("/results", util.checkAuthenticated, async function(req, res) {
-  try {
-    // extracts the name from the user object wierdly because the obj is weird
-    let userStr = JSON.stringify(await req.user)
-    let begin = userStr.indexOf("name\":\"")
-    let end = userStr.indexOf("\",\"email")
-    let name = userStr.slice(begin + 7, end)
+  // extracts the name from the user object wierdly because the obj is weird
+  let name = await util.getName(req)
 
-    // passes the data from the results array to the page then resets the results array
-    res.render("results.ejs", {
-      userName: name,
-      image: results[0].image,
-      name: results[0].name,
-      habitat: results[0].habitat,
-      description: results[0].description
-    })
-    results = []
-  }
-  catch (e) {
-    console.log(e)
-  }
+  // passes the data from the results array to the page then resets the results array
+  res.render("results.ejs", {
+    userName: name,
+    image: results[0].image,
+    name: results[0].name,
+    habitat: results[0].habitat,
+    description: results[0].description
+  })
+  results = []
 })
 
 module.exports = router

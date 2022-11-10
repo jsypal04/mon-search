@@ -20,6 +20,7 @@ const app = express()
 const indexRouter = require("./routes/index")
 const loginRouter = require("./routes/login")
 const registerRouter = require("./routes/register")
+const usersRouter = require("./routes/users")
 
 // initializes the app's passport system
 initPassport(passport,
@@ -34,6 +35,7 @@ initPassport(passport,
 
 // app setup
 app.set("view-engine", "ejs")
+app.use(express.static(__dirname + "/public"))
 app.use(express.urlencoded({extended: false}))
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -54,6 +56,10 @@ db.on("error", error => console.error(error))
 app.use("/", indexRouter)
 app.use("/login", loginRouter)
 app.use("/register", registerRouter)
+app.use("/users", usersRouter)
 
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/views/profile.ejs")
+})
 
 app.listen(process.env.PORT || 5000)

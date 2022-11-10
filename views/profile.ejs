@@ -16,7 +16,7 @@
 
 <nav class="navbar navbar-expand-sm bg-dark">
   <div class="container-fluid">
-    <h2 class="col" style="color: white; text-align: center">Pokemon Search</h2>
+    <h2 class="col" style="text-align: center"><a href="/" style="color: white; text-decoration: none">Pokemon Search</a></h2>
 
     <div class="btn-group" id="profile">
       <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" style="background: black"><%= name %></button>
@@ -32,10 +32,11 @@
 
   </div>
 </nav>
-<div class="container p-5 my-5 border">
-  <form id="form" action="/" method="POST">
-    <label for="poke">Search a Pokemon</label>
-    <input id="poke" type="text" name="poke" placeholder="Search a Pokemon">
-    <button type="submit">Submit</button>
-  </form>
+
+<div class="container p-5 my-5 border" style="text-align: center">
+  <div class="border" style="width: 400px; margin: auto">
+    <img src="/public/Default_pfp.png">
+    <h4 class="card-title"><%= name %></h4>
+    <p class="card-text"><%= email %></p>
+  <div>
 </div>

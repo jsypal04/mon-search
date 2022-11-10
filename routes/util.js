@@ -16,7 +16,37 @@ function checkNotAuthenticated(req, res, next) {
   }
 }
 
+async function getName(req) {
+  try {
+    let userStr = JSON.stringify(await req.user)
+    let begin = userStr.indexOf("name\":\"")
+    let end = userStr.indexOf("\",\"email")
+    let name = userStr.slice(begin + 7, end)
+
+    return name
+  }
+  catch (e) {
+    console.log(e)
+  }
+}
+
+async function getEmail(req) {
+  try {
+    let userStr = JSON.stringify(await req.user)
+    let begin = userStr.indexOf("name\":\"")
+    let end = userStr.indexOf("\",\"email")
+    let name = userStr.slice(begin + 7, end)
+
+    return name
+  }
+  catch (e) {
+    console.log(e)
+  }
+}
+
 module.exports = {
   checkAuthenticated: checkAuthenticated,
-  checkNotAuthenticated: checkNotAuthenticated
+  checkNotAuthenticated: checkNotAuthenticated,
+  getName: getName,
+  getEmail: getEmail
 }
