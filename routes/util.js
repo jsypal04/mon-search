@@ -33,9 +33,9 @@ async function getName(req) {
 async function getEmail(req) {
   try {
     let userStr = JSON.stringify(await req.user)
-    let begin = userStr.indexOf("name\":\"")
-    let end = userStr.indexOf("\",\"email")
-    let name = userStr.slice(begin + 7, end)
+    let begin = userStr.indexOf("email\":\"")
+    let end = userStr.indexOf("\",\"password")
+    let name = userStr.slice(begin + 8, end)
 
     return name
   }

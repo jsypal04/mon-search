@@ -7,7 +7,7 @@ const util = require("./util")
 const router = express.Router()
 
 router.get("/", util.checkNotAuthenticated, function(req, res) {
-  res.render("login.ejs")
+    res.render("login.ejs")
 })
 
 router.post("/", util.checkNotAuthenticated, passport.authenticate("local", {

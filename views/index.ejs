@@ -21,6 +21,7 @@
     <div class="btn-group" id="profile">
       <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" style="background: black"><%= name %></button>
         <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/">Home</a></li>
           <li><a class="dropdown-item" href="/users/profile">Profile</a></li>
           <li>
           <form action="/logout?_method=DELETE" method="POST">

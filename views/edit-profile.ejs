@@ -19,7 +19,7 @@
     <h2 class="col" style="text-align: center"><a href="/" style="color: white; text-decoration: none">Pokemon Search</a></h2>
 
     <div class="btn-group" id="profile">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" style="background: black"><%= name %></button>
+      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" style="background: black"><%= currentName %></button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="/">Home</a></li>
           <li><a class="dropdown-item" href="/users/profile">Profile</a></li>
@@ -39,8 +39,21 @@
     <br>
     <img src="/Default_pfp.png" width="80px" alt="Empty Profile Picture">
     <br><br>
-    <h4 class="card-title"><%= name %></h4>
-    <p class="card-text"><%= email %></p>
-    <a href="/users/edit-profile"><img src="/edit.jpg" width="20px">edit profile</a>
+    <form action="/users/edit-profile" method="POST">
+      <label>Name</label>
+      <br>
+      <input type="text" name="name" placeholder=<%= currentName %>>
+      <br>
+      <label>Email</label>
+      <br>
+      <input type="email" name="email" placeholder=<%= currentEmail %>>
+      <br>
+      <label>Password</label>
+      <br>
+      <input type="password" name=password>
+      <br><br>
+      <button type="submit">Submit</button>
+    </form>
+    <a href="/users/profile">back</a>
   <div>
 </div>
