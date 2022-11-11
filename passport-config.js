@@ -9,7 +9,7 @@ function init(passport, getUserByEmail, getUserById) {
     // gets the user
     const user = await getUserByEmail(email)
     // if no user was found, return an error message
-    if (user.length == 0) {
+    if (user == null) {
       return done(null, false, {message: "No user with that email"})
     }
     try {
