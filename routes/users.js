@@ -20,7 +20,7 @@ router.get("/profile", util.checkAuthenticated, async (req, res) => {
   }
 })
 
-router.get("/edit-profile", util.checkAuthenticated, async (req, res) => {
+router.get("/profile/edit", util.checkAuthenticated, async (req, res) => {
   try {
     let name = await util.getName(req)
     let email = await util.getEmail(req)
@@ -35,7 +35,7 @@ router.get("/edit-profile", util.checkAuthenticated, async (req, res) => {
   }
 })
 
-router.post("/edit-profile", util.checkAuthenticated, async (req, res) => {
+router.post("/profile/edit", util.checkAuthenticated, async (req, res) => {
   try {
 
     if (req.body.name != "") {
@@ -52,7 +52,7 @@ router.post("/edit-profile", util.checkAuthenticated, async (req, res) => {
   }
   catch (e) {
     console.log(e)
-    res.redirect("/users/edit-profile")
+    res.redirect("/users/profile/edit")
   }
 })
 
