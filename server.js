@@ -11,7 +11,6 @@ app.get("/", function(req, res) {
   res.render("index.ejs")
 })
 
-console.log("line 14")
 app.post("/", function(req, res) {
   console.log("line 16")
   let poke = req.body.poke.toLowerCase().trim()
@@ -63,14 +62,18 @@ app.post("/", function(req, res) {
 })
 
 app.get("/results", function(req, res) {
-
-  res.render("results.ejs", {
-    image: results[0].image,
-    name: results[0].name,
-    habitat: results[0].habitat,
-    description: results[0].description
-  })
-  results = []
+  if (results.length == 0) {
+    res.redirect("/")
+  }
+  else {
+    res.render("results.ejs", {
+      image: results[0].image,
+      name: results[0].name,
+      habitat: results[0].habitat,
+      description: results[0].description
+    })
+    results = []
+  }
 })
 
 app.listen(process.env.PORT || 5000)
